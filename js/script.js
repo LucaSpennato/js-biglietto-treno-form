@@ -47,7 +47,7 @@ submitBtn.addEventListener('click', function(){
 
         // facciam vedere i dati con la scontistica applicata:
         // in questo caso rimuoviamo d-none, tanto per provarle tutte (e credo sia anche più corretto dato che d-none resta se inseriamo d-block)
-        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
+        document.querySelector('main .user_pricing_infos div').className.remove ('d-none');
 
         // inseriamo i valori nei div appositi
         document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
@@ -65,7 +65,7 @@ submitBtn.addEventListener('click', function(){
         console.log('Prezzo del bbiglietto con sconto over 65: ' + ticketPrice);
         
         // facciam vedere i dati di scontistica applicata:
-        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
+        document.querySelector('main .user_pricing_infos div').className.remove ('d-none');
 
          // inseriamo i valori nei div appositi
          document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
@@ -81,14 +81,19 @@ submitBtn.addEventListener('click', function(){
         
 
         // facciamo in modo che appaia un messaggio di scontistica non applicata nel caso in cui non rientri nei parametri
-        let noDiscount = document.getElementById('no_discount');
-        noDiscount.classList = 'd-block';
+
+        // 1 METODO, GLI DIAMO D-NONE IN HTML E POI D-BLOCK NELLE CLASSI
+        // let noDiscount = document.getElementById('no_discount');
+        // noDiscount.classList = 'd-block';
         // OPPURE: document.querySelector('main .user_pricing_infos #no_discount').className += 'd-block';
 
         //NOTE BENE: usando però un classList('') o className(''),
         // OPPURE class.List('') o className ('') += 'qualcosa' STAI AGGIUNGENDO
         //   AGGIUNGI SOLO CLASSI, 
         // ne vuoi rimuovere? classList o ClassName .remove('')
+
+        // ALTRO DI INFINITI MEDOTI, MA IN QUESTO CREIAMO IL DIV
+        document.querySelector('main .user_pricing_infos').innerHTML += '<div>Nessuna Scontistica è stata applicata.</div>'
 
         // prezzo finale:
         document.getElementById('user_ticket_price').append(` ${ticketPrice} €`);
