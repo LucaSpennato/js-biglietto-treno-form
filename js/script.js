@@ -55,6 +55,11 @@ submitBtn.addEventListener('click', function(){
         ticketPrice = ticketPrice.toFixed(2)
         console.log('Prezzo del biglietto: ' + ticketPrice);
         document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
+
+        // facciamo in modo che appaia un messaggio di scontistica non applicata nel caso in cui non rientri nei parametri
+        let noDiscount = document.getElementById('no_discount');
+        noDiscount.classList = 'd-block';
+        // OPPURE: document.querySelector('main .user_pricing_infos #no_discount').className ('d-block');
     }
 
 })
