@@ -40,26 +40,58 @@ submitBtn.addEventListener('click', function(){
     document.querySelector('main .info_display_wrapper .user_taught_km').append(` ${travelDistanceKm} Km!`)
 
     if (userAge < 18){
-        ticketPrice = (ticketPrice - (ticketPrice * discountMinor) / 100);
-        ticketPrice = ticketPrice.toFixed(2)
+        discountApply = ((ticketPrice * discountMinor) / 100);
+        discountedTicketPrice = (ticketPrice - discountApply);
+        discountedTicketPrice = discountedTicketPrice.toFixed(2)
         console.log ('Prezzo del biglietto con sconto under 18: ' + ticketPrice);
-        
-        // facciam vedere in html il risultato in base alla condizione soddisfatta
-        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
+
+        // facciam vedere i dati con la scontistica applicata:
+        // in questo caso rimuoviamo d-none, tanto per provarle tutte (e credo sia anche più corretto dato che d-none resta se inseriamo d-block)
+        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
+
+        // inseriamo i valori nei div appositi
+        document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
+        document.querySelector('main .user_pricing_infos>div>div:nth-child(2)').append(` 'Under 18'`)
+        document.querySelector('main .user_pricing_infos>div>div:nth-child(3)').append(` ${discountApply} €`);
+
+        // prezzo finale:
+        document.getElementById('user_ticket_price').append(` ${discountedTicketPrice} €`);
+
     } else if (userAge >= 65) {
-        ticketPrice = (ticketPrice - (ticketPrice * discountElder) / 100);
-        ticketPrice = ticketPrice.toFixed(2);
+        discountApply = ((ticketPrice * discountElder) / 100);
+        discountedTicketPrice = (ticketPrice - discountApply);
+        discountedTicketPrice = discountedTicketPrice.toFixed(2)
+
         console.log('Prezzo del bbiglietto con sconto over 65: ' + ticketPrice);
-        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
+        
+        // facciam vedere i dati di scontistica applicata:
+        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
+
+         // inseriamo i valori nei div appositi
+         document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
+         document.querySelector('main .user_pricing_infos>div>div:nth-child(2)').append(` 'Over 65'`)
+         document.querySelector('main .user_pricing_infos>div>div:nth-child(3)').append(` ${discountApply} €`);
+
+          // prezzo finale:
+        document.getElementById('user_ticket_price').append(` ${discountedTicketPrice} €`);
+
     } else {
         ticketPrice = ticketPrice.toFixed(2)
         console.log('Prezzo del biglietto: ' + ticketPrice);
-        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
+        
 
         // facciamo in modo che appaia un messaggio di scontistica non applicata nel caso in cui non rientri nei parametri
         let noDiscount = document.getElementById('no_discount');
         noDiscount.classList = 'd-block';
-        // OPPURE: document.querySelector('main .user_pricing_infos #no_discount').className ('d-block');
+        // OPPURE: document.querySelector('main .user_pricing_infos #no_discount').className += 'd-block';
+
+        //NOTE BENE: usando però un classList('') o className(''),
+        // OPPURE class.List('') o className ('') += 'qualcosa' STAI AGGIUNGENDO
+        //   AGGIUNGI SOLO CLASSI, 
+        // ne vuoi rimuovere? classList o ClassName .remove('')
+
+        // prezzo finale:
+        document.getElementById('user_ticket_price').append(` ${ticketPrice} €`);
     }
 
 })
