@@ -16,20 +16,35 @@
                 <div class="container py-5">
                     <div class="row justify-content-center">
                         <div class="col-6">
-        
-                            <div class="mb-3">
+
+                            <h1 class="text-white">Genera il prezzo del tuo biglietto</h1>
+                            
+                            <div class="py-3">
                                 <label for="km_input" class="form-label">Inserisci i kilometri che desideri viaggiare</label>
                                 <input type="text" class="form-control" id="km_input">
                             </div>
                             <div class="mb-3">
-                                <label for="age_input" class="form-label">Inserisci la tua età</label>
-                                <input type="text" class="form-control" id="age_input">
+                                <label for="name_input" class="form-label">Inserisci il tuo nome ed il tuo cognome</label>
+                                <input type="text" class="form-control" id="name_input">
                             </div>
+
+                            <div class="mb-3">
+                                <label for="age_choose" class="form-label">Inserisci la tua età</label>
+                                <select class="form-select" id="age_choose">
+                                    <option selected>Scegli la tua età</option>
+                                    <option value="elder">Over 65</option>
+                                    <option value="minor">Minore di 18</option>
+                                    <option>Maggiorenne</option>
+                                </select>
+                            </div>
+                            
+                            <div class="text-white form-text mb-2">We'll share your info with everyone.</div>
+                            <button id="submit_button" class="btn btn-success">Invia</button>
+                        </div>
+                        <div class="col-3 py-4">
                             <div class="mb-3">
                                 
                             </div>
-                            <div class="text-white form-text mb-2">We'll share your info with everyone.</div>
-                            <button id="submit_button" class="btn btn-success">Invia</button>
                         </div>
                     </div>
                 </div>
@@ -41,8 +56,12 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="row col-10">
+                            <div id="user_name_info" class="col-12 fs-1">
+                                <div>Nome passeggero:</div>
+                            </div>
+
                             <div class="col-12 user_taught_km py-3 fs-3">
-                                I kilometri che viaggierai:
+                                I kilometri che percorrerai:
                             </div>
                             <div class="col-12 fs-3 user_pricing_infos">
                                 <div class="row col-12 d-none">

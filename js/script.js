@@ -19,19 +19,33 @@
 // submitBtn, questa variabile avrà ora come valore il bottone nell'html
 let submitBtn = document.getElementById('submit_button');
 let pricePerKm = 0.26;
-let discountMinor = 15;
-let discountElder = 35;
 let ticketPrice;
+
+// due variabili ora inutilizzate, servono a definire il discount in assenza di selettore di età libero con numeri
+// let discountMinor = 15;
+// let discountElder = 35;
 
 // diciamo a submitBtn di ascoltare il click in pagina
 submitBtn.addEventListener('click', function(){  
+
     // diciamo a traveldistance e userage che il loro valore è il value dellinput, 
     // ergo qualsiasi cosa l'utente scriverà
     let travelDistanceKm = parseInt (document.getElementById("km_input").value);
-    let userAge = parseInt (document.getElementById('age_input').value);
     console.log (travelDistanceKm);
-    console.log (userAge);
-    
+
+    // utilizato in assenza di selezione libera di età, sbloccare anche le due variabili discount sopra
+    // let userAge = parseInt (document.getElementById('age_input').value);
+    // console.log (userAge);
+
+    let userName = document.getElementById('name_input').value;
+    console.log (userName);
+    document.getElementById('user_name_info').innerHTML += `<div>${userName}</div>`
+
+    let ageSelector = document.getElementById('age_choose').value;
+    // ageSelector = parseInt(ageSelector);
+    // per altro metodo, dare le variabili di sconto direttamente nel value e fare il parseint, successivamente vanno messe nella condizione sotto
+    console.log (ageSelector);
+
     // prezzo del biglietto!
     let ticketPrice = travelDistanceKm * pricePerKm;
     console.log (ticketPrice);
@@ -39,8 +53,9 @@ submitBtn.addEventListener('click', function(){
     // facciam vedere in pagina i km da percorrere (chiedere domani, perchè non si vedono i decimali?)
     document.querySelector('main .info_display_wrapper .user_taught_km').append(` ${travelDistanceKm} Km!`)
 
-    if (userAge < 18){
-        discountApply = ((ticketPrice * discountMinor) / 100);
+    if (ageSelector == 'minor'){
+        ageSelector = 15
+        discountApply = ((ticketPrice * ageSelector) / 100);
         discountedTicketPrice = (ticketPrice - discountApply);
         discountedTicketPrice = discountedTicketPrice.toFixed(2)
         console.log ('Prezzo del biglietto con sconto under 18: ' + ticketPrice);
@@ -59,8 +74,9 @@ submitBtn.addEventListener('click', function(){
         // prezzo finale:
         document.getElementById('user_ticket_price').append(` ${discountedTicketPrice} €`);
 
-    } else if (userAge >= 65) {
-        discountApply = ((ticketPrice * discountElder) / 100);
+    } else if (ageSelector == 'elder') {
+        ageSelector = 35;
+        discountApply = ((ticketPrice * ageSelector) / 100);
         discountedTicketPrice = (ticketPrice - discountApply);
         discountedTicketPrice = discountedTicketPrice.toFixed(2)
 
