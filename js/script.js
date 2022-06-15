@@ -15,16 +15,39 @@
 // Nota: Se non vi sentite particolarmente creativi, questo screenshot potrebbe essere un’implementazione da seguire per il secondo milestone.
 // Potete scegliere di implementare una soluzione completamente diversa oppure simile, ma in ogni caso cercate di farla vostra.
 
+// definiamo le varibili comuni a tutti
+// submitBtn, questa variabile avrà ora come valore il bottone nell'html
 let submitBtn = document.getElementById('submit_button');
+let pricePerKm = 0.26;
+let discountMinor = 15;
+let discountElder = 35;
+let ticketPrice;
 
+// diciamo a submitBtn di ascoltare il click in pagina
 submitBtn.addEventListener('click', function(){  
+    // diciamo a traveldistance e userage che il loro valore è il value dellinput, 
+    // ergo qualsiasi cosa l'utente scriverà
     let travelDistanceKm = parseInt (document.getElementById("km_input").value);
     let userAge = parseInt (document.getElementById('age_input').value);
-
     console.log (travelDistanceKm);
     console.log (userAge);
     
-    let ciao = travelDistanceKm + userAge;
-    console.log (ciao);
+    // prezzo del biglietto!
+    let ticketPrice = travelDistanceKm * pricePerKm;
+    console.log (ticketPrice);
+
+    if (userAge < 18){
+        ticketPrice = (ticketPrice - (ticketPrice * discountMinor) / 100);
+        ticketPrice = ticketPrice.toFixed(2)
+        console.log ('Prezzo del biglietto con sconto under 18: ' + ticketPrice);
+    } else if (userAge >= 65) {
+        ticketPrice = (ticketPrice - (ticketPrice * discountElder) / 100);
+        ticketPrice = ticketPrice.toFixed(2);
+        console.log('Prezzo del bbiglietto con sconto over 65: ' + ticketPrice);
+    } else {
+        ticketPrice = ticketPrice.toFixed(2)
+        console.log('Prezzo del biglietto: ' + ticketPrice);
+    }
+
 })
 
