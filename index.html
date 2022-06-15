@@ -11,24 +11,44 @@
 <body>
     <main>
 
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-6">
-
-                    <div class="mb-3">
-                        <label for="km_input" class="form-label">Inserisci i kilometri che desideri viaggiare</label>
-                        <input type="text" class="form-control" id="km_input">
+        <section>
+            <div class="containter-fluid input_field_wrapper bg-danger">
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+        
+                            <div class="mb-3">
+                                <label for="km_input" class="form-label">Inserisci i kilometri che desideri viaggiare</label>
+                                <input type="text" class="form-control" id="km_input">
+                            </div>
+                            <div class="mb-3">
+                                <label for="age_input" class="form-label">Inserisci la tua età</label>
+                                <input type="text" class="form-control" id="age_input">
+                            </div>
+                            <div class="text-white form-text mb-2">We'll share your info with everyone.</div>
+                            <button id="submit_button" class="btn btn-success">Invia</button>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="age_input" class="form-label">Inserisci la tua età</label>
-                        <input type="text" class="form-control" id="age_input">
-                    </div>
-                    <div class="form-text mb-2">We'll share your info with everyone.</div>
-                    <button id="submit_button" class="btn btn-success">Invia</button>
-
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section>
+            <div class="container-fluid info_display_wrapper bg-warning py-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="row col-10">
+                            <div class="col-12 user_taught_km py-3 fs-3">
+                                I kilometri che viaggierai:
+                            </div>
+                            <div class="col-12 user_taught_price py-3 fs-3">
+                                Il prezzo del tuo biglietto:
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
     

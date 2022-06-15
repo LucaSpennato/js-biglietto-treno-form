@@ -36,17 +36,25 @@ submitBtn.addEventListener('click', function(){
     let ticketPrice = travelDistanceKm * pricePerKm;
     console.log (ticketPrice);
 
+    // facciam vedere in pagina i km da percorrere (chiedere domani, perchè non si vedono i decimali?)
+    document.querySelector('main .info_display_wrapper .user_taught_km').append(` ${travelDistanceKm} Km!`)
+
     if (userAge < 18){
         ticketPrice = (ticketPrice - (ticketPrice * discountMinor) / 100);
         ticketPrice = ticketPrice.toFixed(2)
         console.log ('Prezzo del biglietto con sconto under 18: ' + ticketPrice);
+        
+        // facciam vedere in html il risultato in base alla condizione soddisfatta
+        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
     } else if (userAge >= 65) {
         ticketPrice = (ticketPrice - (ticketPrice * discountElder) / 100);
         ticketPrice = ticketPrice.toFixed(2);
         console.log('Prezzo del bbiglietto con sconto over 65: ' + ticketPrice);
+        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
     } else {
         ticketPrice = ticketPrice.toFixed(2)
         console.log('Prezzo del biglietto: ' + ticketPrice);
+        document.querySelector('main .info_display_wrapper .user_taught_price').append(` ${ticketPrice} €`);
     }
 
 })
