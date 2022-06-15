@@ -47,7 +47,9 @@ submitBtn.addEventListener('click', function(){
 
         // facciam vedere i dati con la scontistica applicata:
         // in questo caso rimuoviamo d-none, tanto per provarle tutte (e credo sia anche più corretto dato che d-none resta se inseriamo d-block)
-        document.querySelector('main .user_pricing_infos div').className.remove ('d-none');
+        // NEL CASO IN CUI VOLESSIMO AGGIUNGERE CLASSI:
+        // document.querySelector('main .user_pricing_infos div').classList.add ('text-danger', 'text-center', 'active'); E CI PERMETTE DI METTERNE PIù DI UNA
+        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
 
         // inseriamo i valori nei div appositi
         document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
@@ -65,7 +67,7 @@ submitBtn.addEventListener('click', function(){
         console.log('Prezzo del bbiglietto con sconto over 65: ' + ticketPrice);
         
         // facciam vedere i dati di scontistica applicata:
-        document.querySelector('main .user_pricing_infos div').className.remove ('d-none');
+        document.querySelector('main .user_pricing_infos div').classList.remove ('d-none');
 
          // inseriamo i valori nei div appositi
          document.querySelector('main .user_pricing_infos>div>div:first-child').append(` ${ticketPrice} €`);
